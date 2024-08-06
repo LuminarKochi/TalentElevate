@@ -1,0 +1,28 @@
+﻿@model TalentElevate.Models.ApplyCVClass
+@{
+    ViewBag.Title = "ApplyCV_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apply for Job</h2>
+
+@using (Html.BeginForm("Apply_click", "ApplyCV", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.company_id)
+    @Html.HiddenFor(m => m.job_id)
+
+    <div>
+        <label for="resume">Resume:</label>
+        <input type="file" name="file" id="resume" />
+    </div>
+    <div>
+        <input type="submit" value="Apply" />
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.msg))
+{
+    <div>
+        <span>@Model.msg</span>
+    </div>
+}

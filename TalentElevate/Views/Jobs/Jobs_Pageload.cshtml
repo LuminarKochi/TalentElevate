@@ -1,0 +1,75 @@
+﻿@model TalentElevate.Models.JobClass
+@{
+    ViewBag.Title = "Jobs_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Jobs</h2>
+<div>
+    @using (Html.BeginForm("AddJob_click", "Jobs", FormMethod.Post))
+    {
+        <div>
+            <label>Job Title</label>
+            @Html.TextBoxFor(m => m.job_title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.job_title)
+        </div>
+
+        <div>
+            <label>Job Description</label>
+            @Html.TextAreaFor(m => m.job_description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.job_description)
+        </div>
+
+        <div>
+            <label>Job Type</label>
+            @Html.DropDownList("ddljobtype", (SelectList)ViewBag.selectjobtype, "--Select--", new { @class = "form-control" })
+        </div>
+
+        <div>
+            <label>Job Vacancy</label>
+            @Html.TextBoxFor(m => m.vacancy, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.vacancy)
+        </div>
+
+        <div>
+            <label>Job Salary</label>
+            @Html.TextBoxFor(m => m.salary, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.salary)
+        </div>
+
+        <div>
+            <label>Job Skill Set</label>
+            @Html.TextBoxFor(m => m.skilset, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.skilset)
+        </div>
+
+        <div>
+            <label>Experience</label>
+            @Html.TextBoxFor(m => m.experience, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.experience)
+        </div>
+
+        <div>
+            <label>Job Location</label>
+            @Html.TextBoxFor(m => m.location, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.location)
+        </div>
+
+        <div>
+            <label>Job Status</label>
+            @Html.TextBoxFor(m => m.status, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.status)
+        </div>
+
+        <div>
+            <label>Last Date</label>
+            @Html.TextBoxFor(m => m.date, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.date)
+        </div>
+
+        <div>
+            <input type="submit" value="Add Job" class="btn btn-primary" />
+            @Html.DisplayFor(m => m.msg)
+        </div>
+    }
+</div>

@@ -1,0 +1,124 @@
+﻿@model TalentElevate.Models.JobSearch
+@{
+    ViewBag.Title = "searchjob_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Search</h2>
+
+<div>
+    @using (Html.BeginForm("searchjob_click", "JobView", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td style="padding-left:8px"><label>Skills:</label></td>
+                        <td>@Html.TextBoxFor(m => m.insertse.skilset)</td>
+                        <td style="padding-left:8px"><label>Experience:</label></td>
+                        <td>@Html.TextBoxFor(m => m.insertse.experience)</td>
+                        <td style="padding-left:8px"><label>Type:</label></td>
+                        <td>@Html.TextBoxFor(m => m.insertse.job_type)</td>
+                        <td><input type="submit" value="Search" /></td>
+                    </tr>
+                </table>
+            }
+</div>
+<div>
+    @using (Html.BeginForm("searchjob_Pageload", "JobView", FormMethod.Get))
+            {
+                if (Model != null)
+                {
+                    if (Model.selectjob != null && Model.selectjob.Count != 0)
+                    {
+    <table class="table">
+        <tr>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.company_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.job_title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.job_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.job_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.vacancy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.skilset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.experience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.insertse.date)
+            </th>
+        </tr>
+        @foreach (var item in Model.selectjob)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.company_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.job_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.job_description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.job_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vacancy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.skilset)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.experience)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.ActionLink("Apply Now", "ApplyCV_Load", "ApplyCV", new {cid=item.company_id,jid=item.job_id },null)
+                </td>
+            </tr>
+        }
+    </table>
+                    }
+                    else
+                    {
+                        <script>
+                            alert('no data found');
+                        </script>
+                    }
+                }
+            }
+    <div>
+        @Html.ActionLink("Back to Home", "UserHome", "Login")
+    </div>
+</div>

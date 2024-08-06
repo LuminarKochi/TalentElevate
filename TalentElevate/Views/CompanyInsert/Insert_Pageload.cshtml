@@ -1,0 +1,63 @@
+﻿@model TalentElevate.Models.ComRegClass
+@{
+    ViewBag.Title = "Insert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Registration</h2>
+@using (Html.BeginForm("ConpanyInsertClick", "CompanyInsert", FormMethod.Post))
+{
+    <div><label>Company Name:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cname)
+        @Html.ValidationMessageFor(m => m.cname)
+    </div>
+
+    <div><label>Company Email:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cemail)
+        @Html.ValidationMessageFor(m => m.cemail)
+    </div>
+
+    <div><label>Company Phone:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cphone)
+        @Html.ValidationMessageFor(m => m.cphone)
+    </div>
+
+    <div><label>Company Description:</label></div>
+    <div>
+        @Html.TextAreaFor(m => m.description)
+        @Html.ValidationMessageFor(m => m.description)
+    </div>
+
+    <div><label>Company Website:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.website)
+        @Html.ValidationMessageFor(m => m.website)
+    </div>
+
+    <div><label>Company Username:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cusername)
+        @Html.ValidationMessageFor(m => m.cusername)
+    </div>
+
+    <div><label>Company Password:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cpassword)
+        @Html.ValidationMessageFor(m => m.cpassword)
+    </div>
+
+    <div><label>Confirm Password:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.cconfirmPassword)
+        @Html.ValidationMessageFor(m => m.cconfirmPassword)
+    </div>
+
+    <div>
+        <input type="submit" value="Register" />
+        @Html.DisplayFor(m => m.msg)
+    </div>
+}
+

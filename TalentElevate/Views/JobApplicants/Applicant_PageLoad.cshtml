@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TalentElevate.Models.ViewApplicants>
+
+@{
+    ViewBag.Title = "Applicant_PageLoad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Applicant Details</h2>
+
+<style>
+    .status-dropdown {
+        width: 150px; /* Adjust the width as needed */
+        height: 40px; /* Adjust the height as needed */
+        font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .btn-update {
+        margin-top: 10px;
+    }
+</style>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Qualification</th>
+            <th>Experience</th>
+            <th>Skills</th>
+            <th>Photo</th>
+            <th>Resume</th>
+            <th>Vacancy</th>
+            <th>Date Applied</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var applicant in Model)
+        {
+            <tr>
+                <td>@applicant.ApplicantName</td>
+                <td>@applicant.JobTitle</td>
+                <td>@applicant.ApplicantEmail</td>
+                <td>@applicant.ApplicantPhone</td>
+                <td>@applicant.ApplicantQualification</td>
+                <td>@applicant.ApplicantExperience</td>
+                <td>@applicant.ApplicantSkills</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(applicant.ApplicantPhoto))
+                    {
+                        <img src="@Url.Content(applicant.ApplicantPhoto)" alt="Photo" width="50" height="50" />
+                    }
+                    else
+                    {
+                        <span>No Photo</span>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(applicant.ApplicantResume))
+                    {
+                        <a href="@Url.Content(applicant.ApplicantResume)" target="_blank">View Resume</a>
+                    }
+                    else
+                    {
+                        <span>No Resume</span>
+                    }
+                </td>
+                <td>@applicant.vaccancy</td>
+                <td>@applicant.date</td>
+                <td>@applicant.ApplicantStatus</td>
+                <td>
+                    <form action="/JobApplicants/StatusUpdate" method="post">
+                        <input type="hidden" name="applyId" value="@applicant.ApplyId" />
+                        <input type="hidden" name="applicantId" value="@applicant.ApplicantId" />
+                        <select name="status" class="form-control status-dropdown">
+                            <option value="Applied" @(applicant.ApplicantStatus == "Applied" ? "selected" : "")>Applied</option>
+                            <option value="Selected" @(applicant.ApplicantStatus == "Selected" ? "selected" : "")>Selected</option>
+                            <option value="Interviewed" @(applicant.ApplicantStatus == "Interviewed" ? "selected" : "")>Interviewed</option>
+                            <option value="Offer Letter" @(applicant.ApplicantStatus == "Offer Letter" ? "selected" : "")>Offer Letter</option>
+                            <option value="Rejected" @(applicant.ApplicantStatus == "Rejected" ? "selected" : "")>Rejected</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-update">Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

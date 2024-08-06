@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TalentElevateModelStoreContainer" CdmEntityContainer="TalentElevateEntities">
+    <EntitySetMapping Name="company_reg_tb">
+      <EntityTypeMapping TypeName="TalentElevateModel.company_reg_tb">
+        <MappingFragment StoreEntitySet="company_reg_tb">
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="company_email" ColumnName="company_email" />
+          <ScalarProperty Name="company_phone" ColumnName="company_phone" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="website" ColumnName="website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs_tb">
+      <EntityTypeMapping TypeName="TalentElevateModel.jobs_tb">
+        <MappingFragment StoreEntitySet="jobs_tb">
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="vacancy" ColumnName="vacancy" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="skillset" ColumnName="skillset" />
+          <ScalarProperty Name="experiance" ColumnName="experiance" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="last_date" ColumnName="last_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="login_tb">
+      <EntityTypeMapping TypeName="TalentElevateModel.login_tb">
+        <MappingFragment StoreEntitySet="login_tb">
+          <ScalarProperty Name="login_id" ColumnName="login_id" />
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_reg_tb">
+      <EntityTypeMapping TypeName="TalentElevateModel.user_reg_tb">
+        <MappingFragment StoreEntitySet="user_reg_tb">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="experiance" ColumnName="experiance" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_company_reg" FunctionName="TalentElevateModel.Store.sp_company_reg" />
+    <FunctionImportMapping FunctionImportName="sp_jobs" FunctionName="TalentElevateModel.Store.sp_jobs" />
+    <FunctionImportMapping FunctionImportName="sp_login" FunctionName="TalentElevateModel.Store.sp_login" />
+    <FunctionImportMapping FunctionImportName="sp_login_id" FunctionName="TalentElevateModel.Store.sp_login_id" />
+    <FunctionImportMapping FunctionImportName="sp_login_type" FunctionName="TalentElevateModel.Store.sp_login_type" />
+    <FunctionImportMapping FunctionImportName="sp_loginCred" FunctionName="TalentElevateModel.Store.sp_loginCred" />
+    <FunctionImportMapping FunctionImportName="sp_MAXidLogin" FunctionName="TalentElevateModel.Store.sp_MAXidLogin" />
+    <FunctionImportMapping FunctionImportName="sp_user_reg" FunctionName="TalentElevateModel.Store.sp_user_reg" />
+    <FunctionImportMapping FunctionImportName="sp_jobsearch" FunctionName="TalentElevateModel.Store.sp_jobsearch" />
+    <FunctionImportMapping FunctionImportName="sp_jobView" FunctionName="TalentElevateModel.Store.sp_jobView">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TalentElevateModel.sp_jobView_Result">
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="vacancy" ColumnName="vacancy" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="skillset" ColumnName="skillset" />
+          <ScalarProperty Name="experiance" ColumnName="experiance" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="last_date" ColumnName="last_date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="apply_tb">
+      <EntityTypeMapping TypeName="TalentElevateModel.apply_tb">
+        <MappingFragment StoreEntitySet="apply_tb">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="resume" ColumnName="resume" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="apply_id" ColumnName="apply_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_apply" FunctionName="TalentElevateModel.Store.sp_apply" />
+    <FunctionImportMapping FunctionImportName="sp_applicantsView" FunctionName="TalentElevateModel.Store.sp_applicantsView">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TalentElevateModel.sp_applicantsView_Result">
+          <ScalarProperty Name="apply_id" ColumnName="apply_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="experiance" ColumnName="experiance" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="job_id" ColumnName="job_id" />
+          <ScalarProperty Name="resume" ColumnName="resume" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="vacancy" ColumnName="vacancy" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="skillset" ColumnName="skillset" />
+          <ScalarProperty Name="experiance1" ColumnName="experiance1" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="job_status" ColumnName="job_status" />
+          <ScalarProperty Name="last_date" ColumnName="last_date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_sp_updateApplicantStatus" FunctionName="TalentElevateModel.Store.sp_sp_updateApplicantStatus" />
+    <FunctionImportMapping FunctionImportName="sp_appiedjobsview" FunctionName="TalentElevateModel.Store.sp_appiedjobsview">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TalentElevateModel.sp_appiedjobsview_Result">
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="job_description" ColumnName="job_description" />
+          <ScalarProperty Name="job_type" ColumnName="job_type" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="vacancy" ColumnName="vacancy" />
+          <ScalarProperty Name="last_date" ColumnName="last_date" />
+          <ScalarProperty Name="job_status" ColumnName="job_status" />
+          <ScalarProperty Name="apply_date" ColumnName="apply_date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_JobStatusUpdate" FunctionName="TalentElevateModel.Store.sp_JobStatusUpdate" />
+  </EntityContainerMapping>
+</Mapping>

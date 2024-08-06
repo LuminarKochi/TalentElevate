@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cb2d8a8cc3a476cab590c88a9b4f140" Name="Diagram1">
+        <EntityTypeShape EntityType="TalentElevateModel.company_reg_tb" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TalentElevateModel.jobs_tb" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TalentElevateModel.login_tb" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TalentElevateModel.user_reg_tb" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="TalentElevateModel.FK_jobs_tb_company_reg_tb" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TalentElevateModel.apply_tb" Width="1.5" PointX="5.25" PointY="4.25" />
+        <AssociationConnector Association="TalentElevateModel.FK_apply_tb_jobs_tb" />
+        <AssociationConnector Association="TalentElevateModel.FK_apply_tb_user_reg_tb" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

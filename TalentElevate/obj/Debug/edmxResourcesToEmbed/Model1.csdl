@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TalentElevateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="company_reg_tb">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="Int32" Nullable="false" />
+    <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="company_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="company_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="950" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="website" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="jobs_tb" Relationship="Self.FK_jobs_tb_company_reg_tb" FromRole="company_reg_tb" ToRole="jobs_tb" />
+  </EntityType>
+  <EntityType Name="jobs_tb">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_id" Type="Int32" Nullable="false" />
+    <Property Name="job_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job_description" Type="String" MaxLength="750" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vacancy" Type="Int32" Nullable="false" />
+    <Property Name="salary" Type="Int32" Nullable="false" />
+    <Property Name="skillset" Type="String" MaxLength="550" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="experiance" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="last_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="company_reg_tb" Relationship="Self.FK_jobs_tb_company_reg_tb" FromRole="jobs_tb" ToRole="company_reg_tb" />
+    <NavigationProperty Name="apply_tb" Relationship="TalentElevateModel.FK_apply_tb_jobs_tb" FromRole="jobs_tb" ToRole="apply_tb" />
+  </EntityType>
+  <EntityType Name="login_tb">
+    <Key>
+      <PropertyRef Name="login_id" />
+    </Key>
+    <Property Name="login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reg_id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_reg_tb">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="Int32" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="qualification" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="experiance" Type="Int32" Nullable="false" />
+    <Property Name="skills" Type="String" MaxLength="950" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photo" Type="String" MaxLength="550" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="apply_tb" Relationship="TalentElevateModel.FK_apply_tb_user_reg_tb" FromRole="user_reg_tb" ToRole="apply_tb" />
+  </EntityType>
+  <Association Name="FK_jobs_tb_company_reg_tb">
+    <End Role="company_reg_tb" Type="Self.company_reg_tb" Multiplicity="1" />
+    <End Role="jobs_tb" Type="Self.jobs_tb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company_reg_tb">
+        <PropertyRef Name="company_id" />
+      </Principal>
+      <Dependent Role="jobs_tb">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TalentElevateEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="company_reg_tb" EntityType="Self.company_reg_tb" />
+    <EntitySet Name="jobs_tb" EntityType="Self.jobs_tb" />
+    <EntitySet Name="login_tb" EntityType="Self.login_tb" />
+    <EntitySet Name="user_reg_tb" EntityType="Self.user_reg_tb" />
+    <AssociationSet Name="FK_jobs_tb_company_reg_tb" Association="Self.FK_jobs_tb_company_reg_tb">
+      <End Role="company_reg_tb" EntitySet="company_reg_tb" />
+      <End Role="jobs_tb" EntitySet="jobs_tb" />
+    </AssociationSet>
+    <FunctionImport Name="sp_company_reg">
+      <Parameter Name="companyid" Mode="In" Type="Int32" />
+      <Parameter Name="companyname" Mode="In" Type="String" />
+      <Parameter Name="companyemail" Mode="In" Type="String" />
+      <Parameter Name="companyphone" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_jobs">
+      <Parameter Name="company_id" Mode="In" Type="Int32" />
+      <Parameter Name="job_title" Mode="In" Type="String" />
+      <Parameter Name="job_description" Mode="In" Type="String" />
+      <Parameter Name="job_type" Mode="In" Type="String" />
+      <Parameter Name="vacancy" Mode="In" Type="Int32" />
+      <Parameter Name="salary" Mode="In" Type="Int32" />
+      <Parameter Name="skillset" Mode="In" Type="String" />
+      <Parameter Name="experience" Mode="In" Type="Int32" />
+      <Parameter Name="location" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="last_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_login">
+      <Parameter Name="regid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="role" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_login_id" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_login_type" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_loginCred">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_MAXidLogin" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="sp_user_reg">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="qualification" Mode="In" Type="String" />
+      <Parameter Name="experiance" Mode="In" Type="Int32" />
+      <Parameter Name="skills" Mode="In" Type="String" />
+      <Parameter Name="nationality" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="pincode" Mode="In" Type="String" />
+      <Parameter Name="photo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_jobsearch">
+      <Parameter Name="qry" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_jobView" ReturnType="Collection(TalentElevateModel.sp_jobView_Result)" />
+    <EntitySet Name="apply_tb" EntityType="TalentElevateModel.apply_tb" />
+    <AssociationSet Name="FK_apply_tb_jobs_tb" Association="TalentElevateModel.FK_apply_tb_jobs_tb">
+      <End Role="jobs_tb" EntitySet="jobs_tb" />
+      <End Role="apply_tb" EntitySet="apply_tb" />
+    </AssociationSet>
+    <AssociationSet Name="FK_apply_tb_user_reg_tb" Association="TalentElevateModel.FK_apply_tb_user_reg_tb">
+      <End Role="user_reg_tb" EntitySet="user_reg_tb" />
+      <End Role="apply_tb" EntitySet="apply_tb" />
+    </AssociationSet>
+    <FunctionImport Name="sp_apply">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="jobid" Mode="In" Type="Int32" />
+      <Parameter Name="resume" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_applicantsView" ReturnType="Collection(TalentElevateModel.sp_applicantsView_Result)">
+      <Parameter Name="company_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_sp_updateApplicantStatus">
+      <Parameter Name="applicant_id" Mode="In" Type="Int32" />
+      <Parameter Name="applyid" Mode="In" Type="Int32" />
+      <Parameter Name="statusname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_appiedjobsview" ReturnType="Collection(TalentElevateModel.sp_appiedjobsview_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_JobStatusUpdate">
+      <Parameter Name="apply_id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_jobView_Result">
+    <Property Type="String" Name="job_title" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="job_description" Nullable="false" MaxLength="750" />
+    <Property Type="String" Name="job_type" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="vacancy" Nullable="false" />
+    <Property Type="Int32" Name="salary" Nullable="false" />
+    <Property Type="String" Name="skillset" Nullable="false" MaxLength="550" />
+    <Property Type="Int32" Name="experiance" Nullable="false" />
+    <Property Type="String" Name="location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="last_date" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="apply_tb">
+    <Key>
+      <PropertyRef Name="apply_id" />
+    </Key>
+    <Property Name="apply_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="job_id" Type="Int32" Nullable="false" />
+    <Property Name="resume" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="jobs_tb" Relationship="TalentElevateModel.FK_apply_tb_jobs_tb" FromRole="apply_tb" ToRole="jobs_tb" />
+    <NavigationProperty Name="user_reg_tb" Relationship="TalentElevateModel.FK_apply_tb_user_reg_tb" FromRole="apply_tb" ToRole="user_reg_tb" />
+  </EntityType>
+  <Association Name="FK_apply_tb_jobs_tb">
+    <End Type="TalentElevateModel.jobs_tb" Role="jobs_tb" Multiplicity="1" />
+    <End Type="TalentElevateModel.apply_tb" Role="apply_tb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="jobs_tb">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="apply_tb">
+        <PropertyRef Name="job_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_apply_tb_user_reg_tb">
+    <End Type="TalentElevateModel.user_reg_tb" Role="user_reg_tb" Multiplicity="1" />
+    <End Type="TalentElevateModel.apply_tb" Role="apply_tb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_reg_tb">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="apply_tb">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_applicantsView_Result">
+    <Property Type="Int32" Name="apply_id" Nullable="false" />
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="phone" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="qualification" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="experiance" Nullable="false" />
+    <Property Type="String" Name="skills" Nullable="false" MaxLength="950" />
+    <Property Type="String" Name="photo" Nullable="false" MaxLength="550" />
+    <Property Type="Int32" Name="job_id" Nullable="false" />
+    <Property Type="String" Name="resume" Nullable="false" MaxLength="550" />
+    <Property Type="DateTime" Name="date" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="company_id" Nullable="false" />
+    <Property Type="String" Name="job_title" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="job_description" Nullable="false" MaxLength="750" />
+    <Property Type="String" Name="job_type" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="vacancy" Nullable="false" />
+    <Property Type="Int32" Name="salary" Nullable="false" />
+    <Property Type="String" Name="skillset" Nullable="false" MaxLength="550" />
+    <Property Type="Int32" Name="experiance1" Nullable="false" />
+    <Property Type="String" Name="location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="job_status" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="last_date" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_appiedjobsview_Result">
+    <Property Type="String" Name="company_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="job_title" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="job_description" Nullable="false" MaxLength="750" />
+    <Property Type="String" Name="job_type" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="salary" Nullable="false" />
+    <Property Type="Int32" Name="vacancy" Nullable="false" />
+    <Property Type="DateTime" Name="last_date" Nullable="false" />
+    <Property Type="String" Name="job_status" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="apply_date" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,125 @@
+﻿@model TalentElevate.Models.UserRegClass
+@{
+    ViewBag.Title = "Insert_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Registration</h2>
+@using (Html.BeginForm("InsertUserClick", "UserInsert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div><label>First Name:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.fname)
+        @Html.ValidationMessageFor(m => m.fname)
+    </div>
+
+    <div><label>Last Name:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.lname)
+        @Html.ValidationMessageFor(m => m.lname)
+    </div>
+
+    <div><label>Age:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.age)
+        @Html.ValidationMessageFor(m => m.age)
+    </div>
+
+    <div><label>Gender:</label></div>
+    <div>
+        Male
+        @Html.RadioButtonFor(m=>m.gender,"Male")
+        Female
+        @Html.RadioButtonFor(m=>m.gender,"Female")
+    </div>
+
+    <div><label>Address:</label></div>
+    <div>
+        @Html.TextAreaFor(m => m.address)
+        @Html.ValidationMessageFor(m => m.address)
+    </div>
+
+    <div><label>Email:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.email)
+        @Html.ValidationMessageFor(m => m.email)
+    </div>
+
+    <div><label>Phone:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.phone)
+        @Html.ValidationMessageFor(m => m.phone)
+    </div>
+
+    <div><label>Qualification:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.qualification)
+        @Html.ValidationMessageFor(m => m.qualification)
+    </div>
+
+    <div><label>Experiance:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.experience)
+        @Html.ValidationMessageFor(m => m.experience)
+    </div>
+
+    <div><label>Skills:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.skills)
+        @Html.ValidationMessageFor(m => m.skills)
+    </div>
+
+    <div><label>Nationality:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.nationality)
+        @Html.ValidationMessageFor(m => m.nationality)
+    </div>
+
+    <div><label>City:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.city)
+        @Html.ValidationMessageFor(m => m.city)
+    </div>
+
+    <div><label>State:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.state)
+        @Html.ValidationMessageFor(m => m.state)
+    </div>
+
+    <div><label>Pincode:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.pincode)
+        @Html.ValidationMessageFor(m => m.pincode)
+    </div>
+
+    <div><label>Photo:</label></div>
+    <div>
+        @Html.TextBox("file","", new { Type = "file" })
+        @*@Html.ValidationMessageFor(m => m.photo)*@
+    </div>
+
+    <div><label>Username:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.username)
+        @Html.ValidationMessageFor(m => m.username)
+    </div>
+
+    <div><label>Password:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.password)
+        @Html.ValidationMessageFor(m => m.password)
+    </div>
+
+    <div><label>Confirm Password:</label></div>
+    <div>
+        @Html.TextBoxFor(m => m.confirmpassword)
+        @Html.ValidationMessageFor(m => m.confirmpassword)
+    </div>
+
+    <div>
+        <input type="submit" value="Register"/>
+        @Html.DisplayFor(m=>m.usermsg)
+    </div>
+}
+
